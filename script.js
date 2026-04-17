@@ -288,53 +288,62 @@
   setTimeout(typeEffect, 1500);
 
 
-  // ─── PARALLAX ON HERO ───
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    if (scrolled < window.innerHeight) {
-      const heroContent = document.querySelector('.hero-content');
-      if (heroContent) {
-        heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
-        heroContent.style.opacity = 1 - scrolled / (window.innerHeight * 0.8);
+  // ─── MOBILE DETECTION ───
+  const isMobile = window.innerWidth < 768;
+
+
+  // ─── PARALLAX ON HERO (desktop only) ───
+  if (!isMobile) {
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        const heroContent = document.querySelector('.hero-content');
+        if (heroContent) {
+          heroContent.style.transform = `translateY(${scrolled * 0.15}px)`;
+          heroContent.style.opacity = 1 - scrolled / (window.innerHeight * 0.8);
+        }
       }
-    }
-  }, { passive: true });
+    }, { passive: true });
+  }
 
 
-  // ─── WATERMARK PARALLAX ───
-  // Subtle parallax movement on the ghost watermark text
-  const hero = document.getElementById('hero');
-  window.addEventListener('mousemove', (e) => {
-    if (!hero) return;
-    const x = (e.clientX / window.innerWidth - 0.5) * 12;
-    const y = (e.clientY / window.innerHeight - 0.5) * 8;
-    hero.style.setProperty('--mx', x + 'px');
-    hero.style.setProperty('--my', y + 'px');
-  });
-
-
-  // ─── 3D TILT EFFECT FOR CARDS ───
-  const tiltCards = document.querySelectorAll('.service-card, .countdown-card, .social-card, .email-card');
-  tiltCards.forEach(card => {
-    card.addEventListener('mousemove', e => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = ((y - centerY) / centerY) * -8;
-      const rotateY = ((x - centerX) / centerX) * 8;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-      card.style.transition = 'transform 0.1s cubic-bezier(0.22, 1, 0.36, 1)';
+  // ─── WATERMARK PARALLAX (desktop only) ───
+  if (!isMobile) {
+    const hero = document.getElementById('hero');
+    window.addEventListener('mousemove', (e) => {
+      if (!hero) return;
+      const x = (e.clientX / window.innerWidth - 0.5) * 12;
+      const y = (e.clientY / window.innerHeight - 0.5) * 8;
+      hero.style.setProperty('--mx', x + 'px');
+      hero.style.setProperty('--my', y + 'px');
     });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-      card.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+  }
+
+
+  // ─── 3D TILT EFFECT FOR CARDS (desktop only) ───
+  if (!isMobile) {
+    const tiltCards = document.querySelectorAll('.service-card, .countdown-card, .social-card, .email-card');
+    tiltCards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const rotateX = ((y - centerY) / centerY) * -8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        card.style.transition = 'transform 0.1s cubic-bezier(0.22, 1, 0.36, 1)';
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        card.style.transition = 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+      });
     });
-  });
+  }
 
 })();
 
