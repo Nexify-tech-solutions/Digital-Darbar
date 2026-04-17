@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Digital Darbar — Coming Soon | Your Royal Partner in Digital Growth</title>
+  <meta name="description"
+    content="Digital Darbar is coming soon. We craft powerful digital strategies, branding, and marketing solutions to elevate your business. Be the first to experience the future of digital marketing." />
+  <meta name="keywords"
+    content="digital marketing, branding, social media marketing, SEO, performance marketing, digital growth, Digital Darbar" />
+  <meta name="author" content="Digital Darbar" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Digital Darbar — Coming Soon" />
+  <meta property="og:description"
+    content="Your Royal Partner in Digital Growth. We craft powerful digital strategies, branding, and marketing solutions." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://digitaldarbar.com" />
+
+  <!-- Favicon -->
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' fill='%238B1A1A'>♛</text></svg>" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Dancing+Script:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <!-- ═══════════════════ AESTHETIC BACKGROUND ORBS ═══════════════════ -->
+  <div class="bg-shape bg-shape-1" aria-hidden="true"></div>
+  <div class="bg-shape bg-shape-2" aria-hidden="true"></div>
+  <div class="bg-shape bg-shape-3" aria-hidden="true"></div>
+
+  <!-- ═══════════════════ PARTICLE CANVAS ═══════════════════ -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- ═══════════════════ NAVBAR ═══════════════════ -->
+  <nav id="navbar" class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="#" class="logo" id="logo" aria-label="Digital Darbar Home">
+        <span class="logo-text">Digital <span class="logo-accent">Darbar</span></span>
+      </a>
+      <div class="nav-social" id="nav-social">
+        <a href="https://instagram.com/digitaldarbar" target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+          class="social-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+          </svg>
+        </a>
+        <a href="https://linkedin.com/company/digitaldarbar" target="_blank" rel="noopener noreferrer"
+          aria-label="LinkedIn" class="social-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+        <a href="https://twitter.com/digitaldarbar" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"
+          class="social-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z" />
+            <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+          </svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════ HERO SECTION ═══════════════════ -->
+  <header id="hero" class="hero" role="banner">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-badge animate-on-scroll" id="hero-badge">
+        <span class="badge-dot"></span>
+        Launching Soon
+      </div>
+      <h1 class="hero-title animate-on-scroll" id="hero-title">
+        <span class="title-line-wrap"><span class="title-line" style="--d:0.1s">Digital <span
+              class="gold">Darbar</span>'s</span></span>
+        <span class="title-line-wrap"><span class="title-line" style="--d:0.2s">We're <span
+              class="gradient-text">Coming</span></span></span>
+        <span class="title-line-wrap"><span class="title-line title-hero-soon" style="--d:0.3s">SOON</span></span>
+      </h1>
+      <p class="hero-tagline animate-on-scroll">To Build Brands That Rule</p>
+      <p class="hero-subtitle animate-on-scroll" id="hero-subtitle">Your Royal Partner in Digital Growth</p>
+      <p class="hero-description animate-on-scroll" id="hero-description">
+        We craft powerful digital strategies, branding, and marketing solutions to elevate your business.
+      </p>
+      <div class="hero-cta animate-on-scroll" id="hero-cta">
+        <a href="#email-section" class="btn-primary" id="cta-notify">Get Notified</a>
+        <a href="#services" class="btn-outline" id="cta-explore">Explore Services</a>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator" aria-hidden="true">
+      <div class="scroll-line"></div>
+    </div>
+  </header>
+
+  <!-- ═══════════════════ COUNTDOWN SECTION ═══════════════════ -->
+  <section id="countdown-section" class="section countdown-section" aria-label="Launch countdown">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">⏳ Mark Your Calendar</span>
+        <h2 class="section-title">Countdown to <span class="gradient-text">Launch</span></h2>
+      </div>
+      <div class="countdown-grid animate-on-scroll" id="countdown-grid">
+        <div class="countdown-card" id="countdown-days">
+          <div class="countdown-value" id="days">00</div>
+          <div class="countdown-label">Days</div>
+          <div class="countdown-glow"></div>
+        </div>
+        <div class="countdown-separator" aria-hidden="true">:</div>
+        <div class="countdown-card" id="countdown-hours">
+          <div class="countdown-value" id="hours">00</div>
+          <div class="countdown-label">Hours</div>
+          <div class="countdown-glow"></div>
+        </div>
+        <div class="countdown-separator" aria-hidden="true">:</div>
+        <div class="countdown-card" id="countdown-minutes">
+          <div class="countdown-value" id="minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+          <div class="countdown-glow"></div>
+        </div>
+        <div class="countdown-separator" aria-hidden="true">:</div>
+        <div class="countdown-card" id="countdown-seconds">
+          <div class="countdown-value" id="seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+          <div class="countdown-glow"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ EMAIL CAPTURE SECTION ═══════════════════ -->
+  <section id="email-section" class="section email-section" aria-label="Email signup">
+    <div class="container">
+      <div class="email-card animate-on-scroll" id="email-card">
+        <div class="email-card-glow"></div>
+        <div class="email-content">
+          <span class="section-tag">🚀 Stay Ahead</span>
+          <h2 class="section-title">Be the First to <span class="gradient-text">Know</span></h2>
+          <p class="email-description">Be the first to experience the future of digital marketing. Get exclusive early
+            access and launch updates.</p>
+          <form id="email-form" class="email-form" novalidate>
+            <div class="form-group">
+              <input type="email" id="email-input" class="email-input" placeholder="Enter your email"
+                aria-label="Email address" required autocomplete="email" />
+              <button type="submit" class="btn-submit" id="btn-submit">
+                <span class="btn-text">Notify Me</span>
+                <span class="btn-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                    <polyline points="12 5 19 12 12 19" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+            <p class="form-message" id="form-message"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ SERVICES PREVIEW ═══════════════════ -->
+  <section id="services" class="section services-section" aria-label="Our services">
+    <div class="container">
+      <div class="section-header animate-on-scroll">
+        <span class="section-tag">✨ What We Do</span>
+        <h2 class="section-title">Services We'll <span class="gradient-text">Offer</span></h2>
+        <p class="section-subtitle">Comprehensive digital solutions crafted for your empire's growth</p>
+      </div>
+      <div class="services-grid">
+        <article class="service-card animate-on-scroll" id="service-smm">
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                <path d="M2 8c0-3.31 2.69-6 6-6" />
+                <path d="M22 8c0-3.31-2.69-6-6-6" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="service-title">Social Media Marketing</h3>
+          <p class="service-desc">Dominate every platform with scroll-stopping content and data-driven campaigns that
+            build loyal communities.</p>
+          <div class="service-line"></div>
+        </article>
+
+        <article class="service-card animate-on-scroll" id="service-perf">
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="service-title">Performance Marketing</h3>
+          <p class="service-desc">ROI-focused ad campaigns across Google, Meta, and beyond—every rupee optimized for
+            maximum returns.</p>
+          <div class="service-line"></div>
+        </article>
+
+        <article class="service-card animate-on-scroll" id="service-brand">
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="service-title">Branding & Design</h3>
+          <p class="service-desc">Unforgettable visual identities and design systems that make your brand feel premium
+            and unmistakable.</p>
+          <div class="service-line"></div>
+        </article>
+
+        <article class="service-card animate-on-scroll" id="service-seo">
+          <div class="service-icon-wrap">
+            <div class="service-icon">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                <line x1="11" y1="8" x2="11" y2="14" />
+                <line x1="8" y1="11" x2="14" y2="11" />
+              </svg>
+            </div>
+          </div>
+          <h3 class="service-title">SEO & Growth</h3>
+          <p class="service-desc">Rank higher, grow faster. Technical SEO, content strategy, and organic growth that
+            compounds over time.</p>
+          <div class="service-line"></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ SOCIAL LINKS ═══════════════════ -->
+  <section id="social-section" class="section social-section" aria-label="Connect with us">
+    <div class="container">
+      <div class="social-content animate-on-scroll">
+        <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+        <p class="section-subtitle">Follow us for behind-the-scenes updates and launch sneak peeks</p>
+        <div class="social-links-row" id="social-links">
+          <a href="https://instagram.com/digitaldarbar" target="_blank" rel="noopener noreferrer" class="social-card"
+            id="social-instagram" aria-label="Follow us on Instagram">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+            </svg>
+            <span>Instagram</span>
+          </a>
+          <a href="https://linkedin.com/company/digitaldarbar" target="_blank" rel="noopener noreferrer"
+            class="social-card" id="social-linkedin" aria-label="Connect on LinkedIn">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://twitter.com/digitaldarbar" target="_blank" rel="noopener noreferrer" class="social-card"
+            id="social-twitter" aria-label="Follow us on X (Twitter)">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4l11.733 16h4.267l-11.733 -16h-4.267z" />
+              <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+            </svg>
+            <span>Twitter / X</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ FOOTER ═══════════════════ -->
+  <footer id="footer" class="footer" role="contentinfo">
+    <div class="container footer-inner">
+      <a href="#" class="footer-logo" aria-label="Digital Darbar Home">
+        <span class="logo-text">Digital <span class="logo-accent">Darbar</span></span>
+      </a>
+      <p class="footer-copy">&copy; 2026 Digital Darbar. All rights reserved.</p>
+      <p class="footer-tagline">Crafting digital royalty, one brand at a time.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+
+</html>
