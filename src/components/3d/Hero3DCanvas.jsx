@@ -36,10 +36,9 @@ export default function Hero3DCanvas() {
     const coreMat = new THREE.MeshPhongMaterial({
       color: 0x8b1a1a,
       emissive: 0xd4af37,
-      emissiveIntensity: 0.4,
-      shininess: 90,
+      emissiveIntensity: 0.45,
+      shininess: 100,
       flatShading: true,
-      wireframe: false,
     });
     const coreMesh = new THREE.Mesh(coreGeo, coreMat);
     jewelGroup.add(coreMesh);
@@ -55,49 +54,62 @@ export default function Hero3DCanvas() {
     const outerMesh = new THREE.Mesh(outerGeo, outerMat);
     jewelGroup.add(outerMesh);
 
-    // Floating orbital rings (Royal Orbit)
+    // Floating orbital torus rings (Royal Orbit)
     const ringGeo = new THREE.TorusGeometry(6, 0.04, 16, 100);
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.6 });
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0xd4af37, transparent: true, opacity: 0.65 });
     const ring1 = new THREE.Mesh(ringGeo, ringMat);
     ring1.rotation.x = Math.PI / 3;
     jewelGroup.add(ring1);
 
-    const ring2 = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color: 0x8b1a1a, transparent: true, opacity: 0.5 }));
+    const ring2 = new THREE.Mesh(ringGeo, new THREE.MeshBasicMaterial({ color: 0x8b1a1a, transparent: true, opacity: 0.55 }));
     ring2.rotation.y = Math.PI / 4;
     jewelGroup.add(ring2);
 
-    // 2. 3D Particle Constellation
-    const particleCount = 700;
+    // 2. Floating 3D Gold & Crimson Geometric Crystals in Background Depth
+    const floatingCrystals = [];
+    const crystalGeo = new THREE.OctahedronGeometry(0.6, 0);
+    const goldMat = new THREE.MeshStandardMaterial({ color: 0xd4af37, metalness: 0.8, roughness: 0.3 });
+    const crimsonMat = new THREE.MeshStandardMaterial({ color: 0x8b1a1a, metalness: 0.6, roughness: 0.4 });
+
+    for (let i = 0; i < 20; i++) {
+      const mesh = new THREE.Mesh(crystalGeo, i % 2 === 0 ? goldMat : crimsonMat);
+      mesh.position.set(
+        (Math.random() - 0.5) * 45,
+        (Math.random() - 0.5) * 40,
+        (Math.random() - 0.5) * 30 - 5
+      );
+      mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, 0);
+      scene.add(mesh);
+      floatingCrystals.push({
+        mesh,
+        rotSpeedX: (Math.random() - 0.5) * 0.02,
+        rotSpeedY: (Math.random() - 0.5) * 0.02,
+        floatY: Math.random() * Math.PI * 2,
+        baseY: mesh.position.y
+      });
+    }
+
+    // 3. 3D Particle Constellation
+    const particleCount = 800;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
-    const scales = new Float32Array(particleCount);
 
     const goldColor = new THREE.Color(0xd4af37);
     const crimsonColor = new THREE.Color(0x8b1a1a);
     const whiteColor = new THREE.Color(0xffffff);
 
     for (let i = 0; i < particleCount; i++) {
-      const x = (Math.random() - 0.5) * 60;
-      const y = (Math.random() - 0.5) * 60;
-      const z = (Math.random() - 0.5) * 60;
+      positions[i * 3] = (Math.random() - 0.5) * 65;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 65;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 65;
 
-      positions[i * 3] = x;
-      positions[i * 3 + 1] = y;
-      positions[i * 3 + 2] = z;
-
-      // Color variation between Gold, Crimson, and Bright Sparkle
       const mix = Math.random();
-      let pColor;
-      if (mix > 0.6) pColor = goldColor;
-      else if (mix > 0.25) pColor = crimsonColor;
-      else pColor = whiteColor;
+      let pColor = mix > 0.6 ? goldColor : (mix > 0.25 ? crimsonColor : whiteColor);
 
       colors[i * 3] = pColor.r;
       colors[i * 3 + 1] = pColor.g;
       colors[i * 3 + 2] = pColor.b;
-
-      scales[i] = Math.random() * 0.15 + 0.05;
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -119,7 +131,7 @@ export default function Hero3DCanvas() {
 
     const particleTexture = new THREE.CanvasTexture(particleCanvas);
     const pMaterial = new THREE.PointsMaterial({
-      size: 0.6,
+      size: 0.65,
       vertexColors: true,
       map: particleTexture,
       transparent: true,
@@ -130,13 +142,12 @@ export default function Hero3DCanvas() {
     const particleSystem = new THREE.Points(geometry, pMaterial);
     scene.add(particleSystem);
 
-    // 3. Lighting
+    // 4. Lighting & Mouse Light Tracking
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
     scene.add(ambientLight);
 
-    const pointLight1 = new THREE.PointLight(0xd4af37, 2, 50);
-    pointLight1.position.set(10, 10, 10);
-    scene.add(pointLight1);
+    const mouseLight = new THREE.PointLight(0xd4af37, 2.5, 45);
+    scene.add(mouseLight);
 
     const pointLight2 = new THREE.PointLight(0x8b1a1a, 3, 50);
     pointLight2.position.set(-10, -10, 5);
@@ -176,6 +187,11 @@ export default function Hero3DCanvas() {
       targetX += (mouseX - targetX) * 0.05;
       targetY += (mouseY - targetY) * 0.05;
 
+      // Update 3D light following mouse pointer
+      mouseLight.position.x = targetX * 300;
+      mouseLight.position.y = -targetY * 300;
+      mouseLight.position.z = 10;
+
       // Rotate 3D jewel group
       jewelGroup.rotation.y = elapsedTime * 0.25 + targetX * 2;
       jewelGroup.rotation.x = Math.sin(elapsedTime * 0.15) * 0.2 + targetY * 2;
@@ -183,6 +199,13 @@ export default function Hero3DCanvas() {
 
       ring1.rotation.z = elapsedTime * 0.3;
       ring2.rotation.z = -elapsedTime * 0.4;
+
+      // Animate floating crystals
+      floatingCrystals.forEach((item) => {
+        item.mesh.rotation.x += item.rotSpeedX;
+        item.mesh.rotation.y += item.rotSpeedY;
+        item.mesh.position.y = item.baseY + Math.sin(elapsedTime + item.floatY) * 0.5;
+      });
 
       // Rotate particle constellation
       particleSystem.rotation.y = elapsedTime * 0.04 + targetX;
