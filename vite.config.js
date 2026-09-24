@@ -1,20 +1,7 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
-// https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  server: {
-    port: 3000,
-    host: true
-  },
-  // Suppress corrupted source map warnings from dependencies
-  optimizeDeps: {
-    esbuildOptions: {
-      sourcemap: false
-    }
-  },
-  build: {
-    sourcemap: false
-  }
-})
+  plugins: [react(), tailwindcss()],
+});

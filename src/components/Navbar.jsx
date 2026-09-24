@@ -1,196 +1,140 @@
 import React, { useState, useEffect } from 'react';
-import { Crown, Sparkles, Volume2, VolumeX, Menu, X, ArrowRight, Instagram, Linkedin, Twitter } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ArrowUpRight, Crown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-export default function Navbar({ onNotifyClick }) {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(false);
+export default function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      setScrolled(window.scrollY > 20);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const toggleSound = () => {
-    setSoundEnabled(!soundEnabled);
-    // Web Audio ambient frequency toggle
-    if (!soundEnabled) {
-      try {
-        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(528, audioCtx.currentTime); // 528Hz Solfeggio frequency
-        gain.gain.setValueAtTime(0.01, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 1.5);
-        osc.connect(gain);
-        gain.connect(audioCtx.destination);
-        osc.start();
-        osc.stop(audioCtx.currentTime + 1.5);
-      } catch (e) {
-        console.log(e);
-      }
-    }
+  // Close mobile menu on route change
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
+
+  const navLinks = [
+    { name: 'Home', path: '/' },
+    { name: 'Services', path: '/services' },
+    { name: 'Portfolio', path: '/portfolio' },
+    { name: 'Book Strategy Call', path: '/book-call' },
+  ];
+
+  const isActive = (path) => {
+    if (path === '/' && location.pathname === '/') return true;
+    if (path !== '/' && location.pathname.startsWith(path)) return true;
+    return false;
   };
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled
-          ? 'glass-nav py-3 shadow-2xl shadow-black/80 backdrop-blur-xl'
-          : 'bg-transparent py-5'
-      }`}
-    >
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      scrolled 
+        ? 'py-3 bg-[#FBF9F5]/90 backdrop-blur-md border-b border-[#E7E1D4] shadow-sm' 
+        : 'py-5 bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-br from-darbar-gold to-darbar-crimson p-[1px] transition-transform duration-300 group-hover:scale-105">
-              <div className="w-full h-full bg-[#09090e] rounded-[11px] flex items-center justify-center">
-                <Crown className="w-5 h-5 text-darbar-gold group-hover:rotate-12 transition-transform duration-300" />
-              </div>
-              <div className="absolute -inset-1 bg-darbar-gold/20 rounded-xl blur-sm group-hover:bg-darbar-gold/40 transition-all" />
+          <Link to="/" className="flex items-center gap-2.5 group">
+            <div className="w-10 h-10 rounded-sm bg-[#141419] flex items-center justify-center text-[#C5902B] border border-[#C5902B]/30 group-hover:border-[#C5902B] transition-colors">
+              <Crown className="w-5 h-5" />
             </div>
             <div className="flex flex-col">
-              <span className="font-cinzel font-bold text-lg sm:text-xl tracking-wider text-white flex items-center gap-1.5">
-                DIGITAL <span className="text-gold-gradient">DARBAR</span>
+              <span className="font-syne text-xl font-extrabold tracking-wider text-[#141419]">
+                DIGITAL <span className="text-[#C5902B]">DARBAR</span>
               </span>
-              <span className="text-[10px] tracking-[0.25em] text-slate-400 uppercase font-medium">
-                Royal Digital Agency
+              <span className="text-[9px] font-mono tracking-widest text-[#767267] uppercase -mt-1">
+                Luxury Digital Studio
               </span>
             </div>
-          </a>
+          </Link>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden md:flex items-center gap-8">
-            <a
-              href="#hero"
-              className="text-sm font-medium text-slate-300 hover:text-darbar-gold transition-colors duration-200"
-            >
-              Home
-            </a>
-            <a
-              href="#countdown"
-              className="text-sm font-medium text-slate-300 hover:text-darbar-gold transition-colors duration-200"
-            >
-              Countdown
-            </a>
-            <a
-              href="#services"
-              className="text-sm font-medium text-slate-300 hover:text-darbar-gold transition-colors duration-200"
-            >
-              Services
-            </a>
-            <a
-              href="#pillars"
-              className="text-sm font-medium text-slate-300 hover:text-darbar-gold transition-colors duration-200"
-            >
-              The Standard
-            </a>
-            <a
-              href="#connect"
-              className="text-sm font-medium text-slate-300 hover:text-darbar-gold transition-colors duration-200"
-            >
-              Connect
-            </a>
+          {/* Desktop Nav */}
+          <nav className="hidden md:flex items-center gap-8 bg-[#F5F2EB]/80 px-6 py-2 rounded-full border border-[#E7E1D4] backdrop-blur-sm">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`relative text-xs font-mono tracking-widest uppercase py-1 transition-colors ${
+                  isActive(link.path) 
+                    ? 'text-[#C5902B] font-semibold' 
+                    : 'text-[#141419] hover:text-[#C5902B]'
+                }`}
+              >
+                {link.name}
+                {isActive(link.path) && (
+                  <motion.span 
+                    layoutId="activeIndicator"
+                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-[#C5902B]" 
+                  />
+                )}
+              </Link>
+            ))}
           </nav>
 
-          {/* Action Controls */}
+          {/* Right CTA */}
           <div className="hidden md:flex items-center gap-4">
-            
-            {/* Audio Toggle */}
-            <button
-              onClick={toggleSound}
-              title={soundEnabled ? "Mute Royal Ambient" : "Enable Royal Ambient Frequency"}
-              className="p-2.5 rounded-xl border border-white/10 bg-white/5 text-slate-300 hover:text-darbar-gold hover:border-darbar-gold/40 transition-all"
+            <Link
+              to="/book-call"
+              className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono tracking-widest uppercase bg-[#141419] text-[#FBF9F5] hover:bg-[#C5902B] transition-all duration-300 rounded-sm border border-[#141419] group shadow-sm"
             >
-              {soundEnabled ? <Volume2 className="w-4 h-4 text-darbar-gold" /> : <VolumeX className="w-4 h-4" />}
-            </button>
-
-            {/* Launching Badge */}
-            <div className="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full border border-darbar-gold/30 bg-darbar-gold/5 text-xs font-semibold text-darbar-gold">
-              <span className="w-2 h-2 rounded-full bg-darbar-gold animate-ping" />
-              <span>LAUNCHING SOON</span>
-            </div>
-
-            {/* CTA Button */}
-            <button
-              onClick={onNotifyClick}
-              className="relative inline-flex items-center justify-center px-5 py-2.5 overflow-hidden font-medium tracking-wide text-black transition duration-300 ease-out rounded-xl shadow-xl group bg-gold-gradient hover:scale-105"
-            >
-              <span className="absolute inset-0 w-full h-full bg-white/20 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-              <span className="relative font-bold text-xs uppercase flex items-center gap-2">
-                VIP Access <ArrowRight className="w-3.5 h-3.5" />
-              </span>
-            </button>
+              <span>Book Strategy Call</span>
+              <ArrowUpRight className="w-4 h-4 text-[#C5902B] group-hover:text-white transition-colors" />
+            </Link>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg border border-white/10 bg-white/5 text-slate-300"
-            aria-label="Toggle menu"
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden p-2 text-[#141419] hover:text-[#C5902B] focus:outline-none"
+            aria-label="Toggle Navigation"
           >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 glass-nav border-t border-white/10 py-6 px-6 flex flex-col gap-5 shadow-2xl animate-fadeIn">
-          <a
-            href="#hero"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-slate-200 text-lg font-medium hover:text-darbar-gold"
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden bg-[#FBF9F5] border-b border-[#E7E1D4] px-6 py-6 space-y-4 shadow-xl"
           >
-            Home
-          </a>
-          <a
-            href="#countdown"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-slate-200 text-lg font-medium hover:text-darbar-gold"
-          >
-            Countdown
-          </a>
-          <a
-            href="#services"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-slate-200 text-lg font-medium hover:text-darbar-gold"
-          >
-            Services
-          </a>
-          <a
-            href="#pillars"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-slate-200 text-lg font-medium hover:text-darbar-gold"
-          >
-            The Standard
-          </a>
-          <a
-            href="#connect"
-            onClick={() => setMobileMenuOpen(false)}
-            className="text-slate-200 text-lg font-medium hover:text-darbar-gold"
-          >
-            Connect
-          </a>
-          <div className="pt-4 border-t border-white/10 flex flex-col gap-4">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onNotifyClick();
-              }}
-              className="w-full py-3 rounded-xl bg-gold-gradient text-black font-bold text-center text-sm uppercase tracking-wider shadow-lg"
+            <nav className="flex flex-col space-y-3">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  to={link.path}
+                  className={`text-sm font-mono tracking-wider uppercase py-2 border-b border-[#E7E1D4]/40 ${
+                    isActive(link.path) ? 'text-[#C5902B] font-bold pl-2 border-l-2 border-[#C5902B]' : 'text-[#141419]'
+                  }`}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </nav>
+            <Link
+              to="/book-call"
+              className="flex items-center justify-center gap-2 w-full py-3 bg-[#141419] text-[#FBF9F5] font-mono text-xs tracking-widest uppercase rounded-sm border border-[#141419]"
             >
-              Get Early VIP Access
-            </button>
-          </div>
-        </div>
-      )}
+              <span>Book Strategy Call</span>
+              <ArrowUpRight className="w-4 h-4 text-[#C5902B]" />
+            </Link>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
