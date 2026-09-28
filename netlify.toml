@@ -9,9 +9,15 @@
 [build.processing.html]
   pretty_urls = true
 
-# Additional headers to ensure no badge injection
+# Additional headers
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
+
+# SPA catch-all redirect — serve index.html for all routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
