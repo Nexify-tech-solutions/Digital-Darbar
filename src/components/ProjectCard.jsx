@@ -49,13 +49,13 @@ export default function ProjectCard({ project }) {
         </div>
 
         {/* Card Footer Info */}
-        <div className="p-5 bg-[#FBF9F5] border-t border-[#E7E1D4]/60 flex items-center justify-between">
-          <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#C5902B] font-bold">
-            <Award className="w-3.5 h-3.5" />
-            <span className="truncate max-w-[200px]">{project.metrics}</span>
+        <div className="p-4 sm:p-5 bg-[#FBF9F5] border-t border-[#E7E1D4]/60 flex items-center justify-between gap-2">
+          <div className="flex items-center gap-1.5 text-[11px] font-mono text-[#C5902B] font-bold min-w-0">
+            <Award className="w-3.5 h-3.5 shrink-0" />
+            <span className="truncate">{project.metrics}</span>
           </div>
           
-          <span className="inline-flex items-center gap-1 text-[11px] font-mono tracking-wider uppercase text-[#141419] group-hover:text-[#C5902B] transition-colors">
+          <span className="inline-flex items-center gap-1 text-[11px] font-mono tracking-wider uppercase text-[#141419] group-hover:text-[#C5902B] transition-colors shrink-0">
             <span>Watch Reel</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
           </span>

@@ -10,13 +10,13 @@ export default function SectionHeader({
   className = ''
 }) {
   return (
-    <div className={`space-y-4 ${centered ? 'text-center max-w-3xl mx-auto' : 'max-w-2xl'} ${className}`}>
+    <div className={`space-y-3 sm:space-y-4 ${centered ? 'text-center max-w-3xl mx-auto' : 'max-w-2xl'} ${className}`}>
       {kicker && <EditorialLabel text={kicker} light={light} />}
-      <h2 className={`font-syne text-3xl md:text-5xl font-bold tracking-tight leading-tight ${light ? 'text-white' : 'text-[#141419]'}`}>
+      <h2 className={`font-syne text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight leading-tight ${light ? 'text-white' : 'text-[#141419]'}`}>
         {title}
       </h2>
       {subtitle && (
-        <p className={`text-base md:text-lg leading-relaxed font-sans ${light ? 'text-gray-300' : 'text-[#767267]'}`}>
+        <p className={`text-sm sm:text-base md:text-lg leading-relaxed font-sans ${light ? 'text-gray-300' : 'text-[#767267]'}`}>
           {subtitle}
         </p>
       )}

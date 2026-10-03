@@ -13,16 +13,16 @@ export default function ServiceCard({ service, index }) {
   const IconComponent = iconMap[service.icon] || Sparkles;
 
   return (
-    <div className="group relative bg-[#FFFFFF] border border-[#E7E1D4] p-8 transition-all duration-500 hover:border-[#C5902B] hover:shadow-xl flex flex-col justify-between rounded-sm">
-      <div className="space-y-6">
+    <div className="group relative bg-[#FFFFFF] border border-[#E7E1D4] p-6 sm:p-8 transition-all duration-500 hover:border-[#C5902B] hover:shadow-xl flex flex-col justify-between rounded-sm">
+      <div className="space-y-4 sm:space-y-6">
         
         {/* Top Header */}
         <div className="flex items-center justify-between border-b border-[#E7E1D4]/60 pb-4">
-          <span className="font-mono text-2xl font-bold text-[#C5902B]">
+          <span className="font-mono text-xl sm:text-2xl font-bold text-[#C5902B]">
             {service.id}
           </span>
-          <div className="w-12 h-12 rounded-sm bg-[#F5F2EB] flex items-center justify-center text-[#141419] group-hover:bg-[#C5902B] group-hover:text-white transition-all duration-300">
-            <IconComponent className="w-6 h-6" />
+          <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-sm bg-[#F5F2EB] flex items-center justify-center text-[#141419] group-hover:bg-[#C5902B] group-hover:text-white transition-all duration-300">
+            <IconComponent className="w-5 h-5 sm:w-6 sm:h-6" />
           </div>
         </div>
 
@@ -31,10 +31,10 @@ export default function ServiceCard({ service, index }) {
           <span className="text-[10px] font-mono tracking-widest text-[#767267] uppercase block">
             {service.tagline}
           </span>
-          <h3 className="font-syne text-2xl font-bold text-[#141419] group-hover:text-[#C5902B] transition-colors">
+          <h3 className="font-syne text-xl sm:text-2xl font-bold text-[#141419] group-hover:text-[#C5902B] transition-colors">
             {service.title}
           </h3>
-          <p className="text-sm text-[#767267] leading-relaxed font-sans pt-2">
+          <p className="text-xs sm:text-sm text-[#767267] leading-relaxed font-sans pt-1 sm:pt-2">
             {service.description}
           </p>
         </div>

@@ -6,7 +6,7 @@ export default function PackageCard({ pkg }) {
   const isHighlight = pkg.highlight;
 
   return (
-    <div className={`relative flex flex-col justify-between p-8 rounded-sm transition-all duration-300 ${
+    <div className={`relative flex flex-col justify-between p-6 sm:p-8 rounded-sm transition-all duration-300 ${
       isHighlight 
         ? 'bg-[#141419] text-[#FBF9F5] border-2 border-[#C5902B] shadow-2xl transform lg:-translate-y-2' 
         : 'bg-[#FFFFFF] text-[#141419] border border-[#E7E1D4] hover:border-[#C5902B] hover:shadow-lg'
@@ -14,7 +14,7 @@ export default function PackageCard({ pkg }) {
       
       {/* Badge */}
       {pkg.badge && (
-        <div className="absolute -top-3 right-6 px-3 py-1 bg-[#C5902B] text-white text-[10px] font-mono tracking-widest uppercase rounded-full shadow-sm flex items-center gap-1">
+        <div className="absolute -top-3 right-4 sm:right-6 px-3 py-1 bg-[#C5902B] text-white text-[10px] font-mono tracking-widest uppercase rounded-full shadow-sm flex items-center gap-1">
           <Flame className="w-3 h-3" />
           <span>{pkg.badge}</span>
         </div>
@@ -23,7 +23,7 @@ export default function PackageCard({ pkg }) {
       <div>
         {/* Header */}
         <div className="space-y-2 pb-6 border-b border-[#E7E1D4]/20">
-          <h3 className={`font-syne text-2xl font-bold ${isHighlight ? 'text-white' : 'text-[#141419]'}`}>
+          <h3 className={`font-syne text-xl sm:text-2xl font-bold ${isHighlight ? 'text-white' : 'text-[#141419]'}`}>
             {pkg.name}
           </h3>
           <p className={`text-xs font-sans leading-relaxed ${isHighlight ? 'text-gray-300' : 'text-[#767267]'}`}>
@@ -34,7 +34,7 @@ export default function PackageCard({ pkg }) {
         {/* Pricing */}
         <div className="py-6 space-y-1">
           <div className="flex items-baseline gap-2">
-            <span className={`font-syne text-4xl font-extrabold ${isHighlight ? 'text-[#C5902B]' : 'text-[#141419]'}`}>
+            <span className={`font-syne text-3xl sm:text-4xl font-extrabold ${isHighlight ? 'text-[#C5902B]' : 'text-[#141419]'}`}>
               {pkg.price}
             </span>
             <span className={`text-xs font-mono tracking-wider ${isHighlight ? 'text-gray-400' : 'text-[#767267]'}`}>

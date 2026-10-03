@@ -27,24 +27,24 @@ export default function Services() {
   });
 
   return (
-    <div className="space-y-24 md:space-y-36 pb-20 pt-8">
+    <div className="space-y-16 sm:space-y-24 md:space-y-32 pb-16 sm:pb-20 pt-4 sm:pt-8">
       
       {/* HERO HEADER */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-6">
+      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-4 sm:space-y-6">
         <EditorialLabel text="Pricing & Engagement Models" />
-        <h1 className="font-syne text-4xl sm:text-6xl font-extrabold text-[#141419] tracking-tight">
+        <h1 className="font-syne text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#141419] tracking-tight">
           Agency Services & <span className="text-[#C5902B]">Packages</span>
         </h1>
-        <p className="text-base sm:text-lg text-[#767267] font-sans max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-lg text-[#767267] font-sans max-w-2xl mx-auto leading-relaxed">
           Transparent, high-value visual production packages and retainer models designed for luxury growth.
         </p>
 
         {/* PACKAGE TOGGLE SWITCH */}
-        <div className="pt-6 flex items-center justify-center">
-          <div className="inline-flex items-center p-1.5 bg-[#F5F2EB] border border-[#E7E1D4] rounded-full gap-2">
+        <div className="pt-4 sm:pt-6 flex items-center justify-center">
+          <div className="inline-flex flex-wrap sm:flex-nowrap items-center justify-center p-1.5 bg-[#F5F2EB] border border-[#E7E1D4] rounded-2xl sm:rounded-full gap-1.5 max-w-full">
             <button
               onClick={() => setActiveCategory('all')}
-              className={`px-5 py-2 text-xs font-mono tracking-widest uppercase rounded-full transition-all ${
+              className={`px-3.5 sm:px-5 py-2 text-[11px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase rounded-full transition-all ${
                 activeCategory === 'all' 
                   ? 'bg-[#141419] text-white shadow-sm font-bold' 
                   : 'text-[#767267] hover:text-[#141419]'
@@ -54,7 +54,7 @@ export default function Services() {
             </button>
             <button
               onClick={() => setActiveCategory('retainer')}
-              className={`px-5 py-2 text-xs font-mono tracking-widest uppercase rounded-full transition-all ${
+              className={`px-3.5 sm:px-5 py-2 text-[11px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase rounded-full transition-all ${
                 activeCategory === 'retainer' 
                   ? 'bg-[#141419] text-white shadow-sm font-bold' 
                   : 'text-[#767267] hover:text-[#141419]'
@@ -64,7 +64,7 @@ export default function Services() {
             </button>
             <button
               onClick={() => setActiveCategory('one-off')}
-              className={`px-5 py-2 text-xs font-mono tracking-widest uppercase rounded-full transition-all ${
+              className={`px-3.5 sm:px-5 py-2 text-[11px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase rounded-full transition-all ${
                 activeCategory === 'one-off' 
                   ? 'bg-[#141419] text-white shadow-sm font-bold' 
                   : 'text-[#767267] hover:text-[#141419]'
@@ -78,7 +78,7 @@ export default function Services() {
 
       {/* PACKAGES GRID */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {filteredPackages.map((pkg) => (
             <PackageCard key={pkg.id} pkg={pkg} />
           ))}
@@ -86,8 +86,8 @@ export default function Services() {
       </section>
 
       {/* SERVICE ADD-ONS INTERACTIVE BUILDER */}
-      <section className="bg-[#F5F2EB] py-20 px-4 sm:px-6 lg:px-8 border-y border-[#E7E1D4]">
-        <div className="max-w-5xl mx-auto space-y-12">
+      <section className="bg-[#F5F2EB] py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-[#E7E1D4]">
+        <div className="max-w-5xl mx-auto space-y-8 sm:space-y-12">
           
           <SectionHeader
             kicker="Custom Production Enhancements"
@@ -96,22 +96,22 @@ export default function Services() {
             centered
           />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
             {serviceAddOns.map((addon) => {
               const isSelected = selectedAddOns.includes(addon.id);
               return (
                 <div
                   key={addon.id}
                   onClick={() => toggleAddOn(addon.id)}
-                  className={`p-6 rounded-sm border cursor-pointer transition-all duration-300 flex items-start justify-between gap-4 ${
+                  className={`p-5 sm:p-6 rounded-sm border cursor-pointer transition-all duration-300 flex items-start justify-between gap-4 ${
                     isSelected
                       ? 'bg-[#FFFFFF] border-[#C5902B] shadow-md ring-1 ring-[#C5902B]'
                       : 'bg-[#FBF9F5] border-[#E7E1D4] hover:border-[#C5902B]/60'
                   }`}
                 >
                   <div className="space-y-2">
-                    <div className="flex items-center gap-3">
-                      <h4 className="font-syne text-lg font-bold text-[#141419]">{addon.title}</h4>
+                    <div className="flex flex-wrap items-center gap-2 sm:gap-3">
+                      <h4 className="font-syne text-base sm:text-lg font-bold text-[#141419]">{addon.title}</h4>
                       <span className="font-mono text-xs font-bold text-[#C5902B] bg-[#C5902B]/10 px-2 py-0.5 rounded">
                         {addon.price}
                       </span>
@@ -138,7 +138,7 @@ export default function Services() {
 
           {/* Add-ons summary bar */}
           {selectedAddOns.length > 0 && (
-            <div className="p-6 bg-[#141419] text-white rounded-sm border border-[#C5902B] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-4 sm:p-6 bg-[#141419] text-white rounded-sm border border-[#C5902B] flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
               <div>
                 <span className="text-xs font-mono text-[#C5902B] uppercase block">Selected Add-Ons ({selectedAddOns.length})</span>
                 <p className="text-sm font-sans text-gray-300">
@@ -147,7 +147,7 @@ export default function Services() {
               </div>
               <Link
                 to={`/book-call?addons=${selectedAddOns.join(',')}`}
-                className="px-6 py-3 bg-[#C5902B] text-white font-mono text-xs tracking-widest uppercase font-bold rounded hover:bg-[#B37D1D] transition-colors"
+                className="w-full sm:w-auto px-6 py-3 bg-[#C5902B] text-white font-mono text-xs tracking-widest uppercase font-bold rounded hover:bg-[#B37D1D] transition-colors text-center shrink-0"
               >
                 Proceed with Selected Add-Ons
               </Link>
@@ -159,7 +159,7 @@ export default function Services() {
 
       {/* FAQ SECTION */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="space-y-12">
+        <div className="space-y-8 sm:space-y-12">
           <SectionHeader
             kicker="Clear Answers"
             title="Frequently Asked Questions"
@@ -172,9 +172,9 @@ export default function Services() {
 
       {/* BESPOKE CAMPAIGN CTA */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-[#FFFFFF] border-2 border-[#E7E1D4] rounded-sm p-8 sm:p-12 text-center space-y-6">
+        <div className="bg-[#FFFFFF] border-2 border-[#E7E1D4] rounded-sm p-6 sm:p-12 text-center space-y-4 sm:space-y-6">
           <EditorialLabel text="Custom Agency Proposals" />
-          <h2 className="font-syne text-3xl sm:text-4xl font-bold text-[#141419]">
+          <h2 className="font-syne text-2xl sm:text-4xl font-bold text-[#141419]">
             Need a Bespoke Multi-City Campaign?
           </h2>
           <p className="text-sm sm:text-base text-[#767267] font-sans max-w-xl mx-auto">
@@ -183,7 +183,7 @@ export default function Services() {
           <div className="pt-2">
             <Link
               to="/book-call"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#141419] text-white font-mono text-xs tracking-widest uppercase font-bold rounded-sm hover:bg-[#C5902B] transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#141419] text-white font-mono text-xs tracking-widest uppercase font-bold rounded-sm hover:bg-[#C5902B] transition-colors text-center"
             >
               <span>Book Strategy Call</span>
               <ArrowUpRight className="w-4 h-4 text-[#C5902B]" />

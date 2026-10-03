@@ -13,7 +13,7 @@ export default function MainLayout() {
   return (
     <div className="min-h-screen flex flex-col bg-[#FBF9F5] text-[#141419] font-sans antialiased">
       <Navbar />
-      <main className="flex-grow pt-20">
+      <main className="flex-grow pt-16 sm:pt-20">
         <Outlet />
       </main>
       <Footer />

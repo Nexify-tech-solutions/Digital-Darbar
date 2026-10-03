@@ -16,27 +16,27 @@ export default function Portfolio() {
   });
 
   return (
-    <div className="space-y-16 md:space-y-24 pb-20 pt-8">
+    <div className="space-y-12 sm:space-y-16 md:space-y-24 pb-16 sm:pb-20 pt-4 sm:pt-8">
       
       {/* HERO */}
-      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-6">
+      <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center space-y-4 sm:space-y-6">
         <EditorialLabel text="Curated Agency Archive" />
-        <h1 className="font-syne text-4xl sm:text-6xl font-extrabold text-[#141419] tracking-tight">
+        <h1 className="font-syne text-3xl sm:text-5xl md:text-6xl font-extrabold text-[#141419] tracking-tight">
           Our <span className="text-[#C5902B]">Masterpieces</span>
         </h1>
-        <p className="text-base sm:text-lg text-[#767267] font-sans max-w-2xl mx-auto leading-relaxed">
+        <p className="text-sm sm:text-lg text-[#767267] font-sans max-w-2xl mx-auto leading-relaxed">
           High-contrast editorial shoots, viral 9:16 short form video reels, and brand transformation campaigns.
         </p>
       </section>
 
       {/* FILTER BAR */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex items-center justify-center flex-wrap gap-2 sm:gap-3 bg-[#F5F2EB] p-2 rounded-full border border-[#E7E1D4] max-w-4xl mx-auto">
+        <div className="flex items-center justify-center flex-wrap gap-1.5 sm:gap-2.5 bg-[#F5F2EB] p-1.5 sm:p-2 rounded-2xl sm:rounded-full border border-[#E7E1D4] max-w-3xl mx-auto">
           {portfolioCategories.map((cat) => (
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 text-xs font-mono tracking-widest uppercase rounded-full transition-all duration-300 ${
+              className={`px-3 sm:px-4 py-1.5 sm:py-2 text-[11px] sm:text-xs font-mono tracking-wider sm:tracking-widest uppercase rounded-full transition-all duration-300 ${
                 selectedCategory === cat
                   ? 'bg-[#141419] text-[#C5902B] font-bold shadow-sm'
                   : 'text-[#767267] hover:text-[#141419]'
@@ -52,7 +52,7 @@ export default function Portfolio() {
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div 
           layout
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8"
         >
           <AnimatePresence>
             {filteredProjects.map((project) => (
@@ -73,9 +73,9 @@ export default function Portfolio() {
 
       {/* PORTFOLIO BOTTOM CTA */}
       <section className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-[#141419] text-white p-10 sm:p-16 rounded-md border-2 border-[#C5902B] text-center space-y-6 shadow-2xl">
+        <div className="bg-[#141419] text-white p-6 sm:p-12 lg:p-16 rounded-md border-2 border-[#C5902B] text-center space-y-4 sm:space-y-6 shadow-2xl">
           <EditorialLabel text="Strategic Scaling" light />
-          <h2 className="font-syne text-3xl sm:text-5xl font-bold tracking-tight">
+          <h2 className="font-syne text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight">
             Want Reels That <span className="text-[#C5902B]">Actually Sell?</span>
           </h2>
           <p className="text-gray-300 text-sm sm:text-base max-w-xl mx-auto leading-relaxed">
@@ -84,7 +84,7 @@ export default function Portfolio() {
           <div className="pt-2">
             <Link
               to="/book-call"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-[#C5902B] text-white font-mono text-xs tracking-widest uppercase font-bold rounded-sm hover:bg-[#B37D1D] transition-colors shadow-lg"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 bg-[#C5902B] text-white font-mono text-xs tracking-widest uppercase font-bold rounded-sm hover:bg-[#B37D1D] transition-colors shadow-lg text-center"
             >
               <span>Claim Strategic Slot</span>
               <ArrowUpRight className="w-4 h-4" />

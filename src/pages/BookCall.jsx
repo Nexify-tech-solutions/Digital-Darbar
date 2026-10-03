@@ -76,12 +76,12 @@ export default function BookCall() {
   const currentSelectedTierObj = budgetTiers.find(t => t.id === selectedTier);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8 sm:space-y-12">
       
       {/* HEADER */}
-      <div className="text-center space-y-4 max-w-2xl mx-auto">
+      <div className="text-center space-y-3 sm:space-y-4 max-w-2xl mx-auto">
         <EditorialLabel text="Private Concierge Booking" />
-        <h1 className="font-syne text-4xl sm:text-5xl font-extrabold text-[#141419] tracking-tight">
+        <h1 className="font-syne text-3xl sm:text-5xl font-extrabold text-[#141419] tracking-tight">
           Ignite Your <span className="text-[#C5902B]">Brand</span>
         </h1>
         <p className="text-sm sm:text-base text-[#767267] font-sans leading-relaxed">
@@ -97,24 +97,24 @@ export default function BookCall() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             onSubmit={handleSubmit}
-            className="bg-[#FFFFFF] border-2 border-[#E7E1D4] rounded-sm p-6 sm:p-10 shadow-xl space-y-10"
+            className="bg-[#FFFFFF] border-2 border-[#E7E1D4] rounded-sm p-4 sm:p-8 lg:p-10 shadow-xl space-y-8 sm:space-y-10"
           >
             
             {/* STEP 1: BUDGET SELECTION */}
             <div className="space-y-4">
               <div className="flex items-center gap-2 border-b border-[#E7E1D4] pb-3">
                 <span className="w-6 h-6 rounded-full bg-[#C5902B] text-white font-mono text-xs flex items-center justify-center font-bold">1</span>
-                <h3 className="font-syne text-xl font-bold text-[#141419]">Select Estimated Budget Tier</h3>
+                <h3 className="font-syne text-lg sm:text-xl font-bold text-[#141419]">Select Estimated Budget Tier</h3>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
                 {budgetTiers.map((tier) => {
                   const isSelected = selectedTier === tier.id;
                   return (
                     <div
                       key={tier.id}
                       onClick={() => setSelectedTier(tier.id)}
-                      className={`p-4 rounded-sm border cursor-pointer transition-all duration-300 space-y-1 ${
+                      className={`p-3.5 sm:p-4 rounded-sm border cursor-pointer transition-all duration-300 space-y-1 ${
                         isSelected
                           ? 'bg-[#141419] text-[#FBF9F5] border-[#C5902B] shadow-md ring-2 ring-[#C5902B]'
                           : 'bg-[#FBF9F5] text-[#141419] border-[#E7E1D4] hover:border-[#C5902B]'
@@ -126,7 +126,7 @@ export default function BookCall() {
                         </span>
                         {isSelected && <CheckCircle2 className="w-4 h-4 text-[#C5902B]" />}
                       </div>
-                      <div className="font-syne text-xl font-bold">
+                      <div className="font-syne text-lg sm:text-xl font-bold">
                         {tier.range}
                       </div>
                       <p className={`text-[11px] font-sans ${isSelected ? 'text-gray-300' : 'text-[#767267]'}`}>
@@ -139,30 +139,30 @@ export default function BookCall() {
             </div>
 
             {/* STEP 2 & 3: DATE & TIME SELECTION */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
               
               {/* DATE SELECTOR */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2 border-b border-[#E7E1D4] pb-3">
                   <span className="w-6 h-6 rounded-full bg-[#C5902B] text-white font-mono text-xs flex items-center justify-center font-bold">2</span>
-                  <h3 className="font-syne text-xl font-bold text-[#141419]">Select Strategy Date</h3>
+                  <h3 className="font-syne text-lg sm:text-xl font-bold text-[#141419]">Select Strategy Date</h3>
                 </div>
 
-                <div className="grid grid-cols-5 gap-2">
+                <div className="flex sm:grid sm:grid-cols-5 gap-2 overflow-x-auto pb-1 no-scrollbar">
                   {availableDates.map((d) => {
                     const isSelected = selectedDate === d.id;
                     return (
                       <div
                         key={d.id}
                         onClick={() => setSelectedDate(d.id)}
-                        className={`p-3 rounded-sm border text-center cursor-pointer transition-all ${
+                        className={`p-2.5 sm:p-3 rounded-sm border text-center cursor-pointer transition-all flex-1 min-w-[68px] sm:min-w-0 shrink-0 ${
                           isSelected
                             ? 'bg-[#C5902B] text-white border-[#C5902B] font-bold shadow-md'
                             : 'bg-[#FBF9F5] border-[#E7E1D4] text-[#141419] hover:border-[#C5902B]'
                         }`}
                       >
-                        <span className="block text-[11px] font-mono uppercase">{d.day}</span>
-                        <span className="block font-syne text-sm font-bold mt-1">{d.dateStr}</span>
+                        <span className="block text-[10px] sm:text-[11px] font-mono uppercase">{d.day}</span>
+                        <span className="block font-syne text-xs sm:text-sm font-bold mt-1">{d.dateStr}</span>
                       </div>
                     );
                   })}
@@ -173,23 +173,23 @@ export default function BookCall() {
               <div className="space-y-4">
                 <div className="flex items-center gap-2 border-b border-[#E7E1D4] pb-3">
                   <span className="w-6 h-6 rounded-full bg-[#C5902B] text-white font-mono text-xs flex items-center justify-center font-bold">3</span>
-                  <h3 className="font-syne text-xl font-bold text-[#141419]">Select Time Slot (IST)</h3>
+                  <h3 className="font-syne text-lg sm:text-xl font-bold text-[#141419]">Select Time Slot (IST)</h3>
                 </div>
 
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 gap-2.5 sm:gap-3">
                   {timeSlots.map((t) => {
                     const isSelected = selectedTime === t;
                     return (
                       <div
                         key={t}
                         onClick={() => setSelectedTime(t)}
-                        className={`p-3 rounded-sm border text-center cursor-pointer transition-all flex items-center justify-center gap-2 ${
+                        className={`p-2.5 sm:p-3 rounded-sm border text-center cursor-pointer transition-all flex items-center justify-center gap-2 ${
                           isSelected
                             ? 'bg-[#141419] text-[#C5902B] border-[#C5902B] font-bold shadow-md'
                             : 'bg-[#FBF9F5] border-[#E7E1D4] text-[#141419] hover:border-[#C5902B]'
                         }`}
                       >
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                         <span className="font-mono text-xs">{t}</span>
                       </div>
                     );
@@ -203,10 +203,10 @@ export default function BookCall() {
             <div className="space-y-4 pt-2">
               <div className="flex items-center gap-2 border-b border-[#E7E1D4] pb-3">
                 <span className="w-6 h-6 rounded-full bg-[#C5902B] text-white font-mono text-xs flex items-center justify-center font-bold">4</span>
-                <h3 className="font-syne text-xl font-bold text-[#141419]">Brand & Contact Information</h3>
+                <h3 className="font-syne text-lg sm:text-xl font-bold text-[#141419]">Brand & Contact Information</h3>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                 <div>
                   <label className="block text-xs font-mono uppercase text-[#141419] mb-1 font-bold">
                     Brand / Company Name *
@@ -217,7 +217,7 @@ export default function BookCall() {
                     placeholder="e.g. Zaveri Fine Jewels"
                     value={formData.brandName}
                     onChange={(e) => setFormData({ ...formData, brandName: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
                   />
                 </div>
 
@@ -231,7 +231,7 @@ export default function BookCall() {
                     placeholder="e.g. Vikram Singhania"
                     value={formData.contactName}
                     onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
                   />
                 </div>
 
@@ -245,7 +245,7 @@ export default function BookCall() {
                     placeholder="vikram@singhaniacouture.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
                   />
                 </div>
 
@@ -259,7 +259,7 @@ export default function BookCall() {
                     placeholder="+91 98200 00000"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full px-4 py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
+                    className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
                   />
                 </div>
               </div>
@@ -273,7 +273,7 @@ export default function BookCall() {
                   placeholder="Tell us about your upcoming launch, timeline, or preferred shoot location..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  className="w-full px-4 py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
+                  className="w-full px-3.5 sm:px-4 py-2.5 sm:py-3 bg-[#FBF9F5] border border-[#E7E1D4] rounded-sm text-sm focus:outline-none focus:border-[#C5902B]"
                 />
               </div>
             </div>
@@ -302,15 +302,15 @@ export default function BookCall() {
             key="booking-success"
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-[#141419] text-white border-2 border-[#C5902B] rounded-sm p-8 sm:p-14 text-center space-y-6 shadow-2xl"
+            className="bg-[#141419] text-white border-2 border-[#C5902B] rounded-sm p-6 sm:p-10 lg:p-14 text-center space-y-5 sm:space-y-6 shadow-2xl"
           >
-            <div className="w-16 h-16 rounded-full bg-[#C5902B] text-white mx-auto flex items-center justify-center shadow-lg">
-              <CheckCircle2 className="w-8 h-8" />
+            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#C5902B] text-white mx-auto flex items-center justify-center shadow-lg">
+              <CheckCircle2 className="w-7 h-7 sm:w-8 sm:h-8" />
             </div>
 
             <EditorialLabel text="Session Reserved" light />
 
-            <h2 className="font-syne text-3xl sm:text-4xl font-bold">
+            <h2 className="font-syne text-2xl sm:text-4xl font-bold">
               Strategy Session Confirmed!
             </h2>
 

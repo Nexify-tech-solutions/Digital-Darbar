@@ -24,13 +24,13 @@ export default function FAQAccordion({ faqs }) {
           >
             <button
               onClick={() => toggle(item.id)}
-              className="w-full text-left p-6 flex items-center justify-between gap-4 focus:outline-none"
+              className="w-full text-left p-4 sm:p-6 flex items-center justify-between gap-3 sm:gap-4 focus:outline-none"
               aria-expanded={isOpen}
             >
-              <span className={`font-syne text-lg font-bold transition-colors ${isOpen ? 'text-[#C5902B]' : 'text-[#141419]'}`}>
+              <span className={`font-syne text-base sm:text-lg font-bold transition-colors ${isOpen ? 'text-[#C5902B]' : 'text-[#141419]'}`}>
                 {item.question}
               </span>
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+              <div className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
                 isOpen ? 'bg-[#C5902B] text-white rotate-180' : 'bg-[#E7E1D4] text-[#141419]'
               }`}>
                 <ChevronDown className="w-4 h-4" />
@@ -46,7 +46,7 @@ export default function FAQAccordion({ faqs }) {
                   transition={{ duration: 0.3 }}
                   className="overflow-hidden"
                 >
-                  <div className="px-6 pb-6 pt-0 text-sm text-[#767267] font-sans leading-relaxed border-t border-[#E7E1D4]/40 mt-1 pt-4">
+                  <div className="px-4 sm:px-6 pb-5 sm:pb-6 pt-0 text-xs sm:text-sm text-[#767267] font-sans leading-relaxed border-t border-[#E7E1D4]/40 mt-1 pt-3 sm:pt-4">
                     {item.answer}
                   </div>
                 </motion.div>
